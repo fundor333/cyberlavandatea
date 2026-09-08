@@ -321,8 +321,8 @@ Create these in your own `layouts/_partials/`:
 ```
 themes/cyberlavandatea/
 ├── theme.toml · go.mod · package.json · hugo.toml · LICENSE · README.md
-│   CHANGELOG.md · CONTRIBUTING.md · .editorconfig · .gitattributes · netlify.toml
-├── .github/workflows/ci.yml
+│   CHANGELOG.md · CONTRIBUTING.md · .editorconfig · .gitattributes
+├── .github/workflows/    ci.yml (PR build) · pages.yml (deploy demo)
 ├── archetypes/            default, post, micro, now, photos, event, weeknote
 ├── assets/
 │   ├── css/main.css       Tailwind v4 + @theme (palette) + base + .chroma
