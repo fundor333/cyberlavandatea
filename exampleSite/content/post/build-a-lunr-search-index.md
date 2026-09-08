@@ -14,8 +14,7 @@ syndication = [
 # Mastodon comments: replies to this toot are shown under the post.
 [comments]
   host = "mastodon.social"
-  username = "Gargron"
-  id = "1"
+  username = "fundor333"
 +++
 
 Hugo can emit a **custom output format**: a `search.json` file with every page.
