@@ -10,7 +10,7 @@
 /* SITE */
 
   Last update: {{ now.Format "2006/01/02" }}
-  Language: {{ range $i, $s := hugo.Sites }}{{ if $i }}, {{ end }}{{ $s.Language.Label }}{{ end }}
+  Language: {{ range $i, $s := site.Sites }}{{ if $i }}, {{ end }}{{ or $s.Language.LanguageName $s.Language.Lang }}{{ end }}
   Doctype: HTML5
   Standards: HTML5, CSS3, Open Graph, Schema.org, Microformats2
   Components: Hugo, Tailwind CSS, Lunr, CyberLavandaTea
