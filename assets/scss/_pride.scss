@@ -1,0 +1,13 @@
+// ---------------------------------------------------------------------------
+// 8. LGBTQ+ corner (pride.codes) — opt-in via params.prideCorner
+// ---------------------------------------------------------------------------
+.pridecodes-code-corner { position: fixed; top: 0; right: 0; z-index: 9999; line-height: 0; }
+
+#pridecodes-code-corner-svg {
+  width: 96px; height: auto; animation: pride-enter 1.6s ease both; transition: transform 0.2s ease-in-out;
+
+  &:hover { transform: scale(1.08); transform-origin: right top; }
+}
+@keyframes pride-enter { from { opacity: 0; } to { opacity: 1; } }
+@media (min-width: 768px) { #pridecodes-code-corner-svg { width: 130px; } }
+@media (prefers-reduced-motion: reduce) { #pridecodes-code-corner-svg { animation: none; } }

@@ -1,0 +1,110 @@
+// ---------------------------------------------------------------------------
+// 9. Webmentions + Mastodon comments
+// ---------------------------------------------------------------------------
+#webmentions {
+  margin: 1.25rem 0; line-height: 1.45;
+
+  h2 { font-size: 1.05rem; margin: 1.5rem 0 0.5rem; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  img.missing { border: 1px dashed var(--color-inactive); }
+  a.reaction sub { font-size: 0.7em; color: var(--color-inactive); }
+
+  /* Reactions facepile (<ul class="reacts"> of bare <a class="reaction">) */
+  .reacts {
+    display: flex; flex-wrap: wrap; align-items: center; margin: 0.25rem 0 1rem;
+
+    a.reaction {
+      display: inline-flex; text-decoration: none;
+
+      img {
+        width: 2.25rem; height: 2.25rem; border-radius: 999px;
+        object-fit: cover; border: 1px solid var(--color-border);
+        margin-right: -0.55rem; background: var(--color-surface);
+        transition: transform 100ms var(--ease-standard);
+      }
+      &:hover img { transform: translateY(-2px) scale(1.05); position: relative; z-index: 1; }
+    }
+  }
+
+  /* Responses (<ul class="comments"> of <li>) */
+  .comments {
+    li {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.5rem;
+      padding: 0.55rem 0; border-top: 1px solid var(--color-border);
+
+      a.reaction { flex: none; }
+      a.reaction img { width: 1.6rem; height: 1.6rem; border-radius: 999px; border: 1px solid var(--color-border); object-fit: cover; }
+    }
+    a.source { font-weight: 700; text-decoration: none; }
+    .name,
+    .text { color: var(--color-content); flex: 1 1 100%; }
+    .text { color: var(--color-inactive); }
+  }
+  time, .date { color: var(--color-inactive); font-size: 0.85em; }
+}
+
+/* Mastodon comment thread (partials/mastodon.html) */
+section#comments {
+  margin-top: 1.5rem;
+
+  > p { margin: 0 0 1rem; }
+}
+#comments-wrapper { display: flex; flex-direction: column; gap: 0.25rem; }
+
+section#comments .comment {
+  display: grid;
+  column-gap: 0.9rem;
+  grid-template-columns: 3rem 1fr;
+  grid-template-areas:
+    "avatar author"
+    "avatar time"
+    "body   body"
+    "foot   foot";
+  align-items: start;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+
+  &.comment-reply { margin-left: 1.25rem; }
+  &.op { border-left: 3px solid var(--color-primary); padding-left: 0.75rem; }
+}
+
+section#comments .avatar-link {
+  grid-area: avatar; width: 3rem; height: 3rem; position: relative;
+
+  .avatar { width: 100%; height: 100%; border-radius: 20%; object-fit: cover; background: var(--color-surface); }
+  &.op::after {
+    content: "✓"; position: absolute; right: -0.25rem; bottom: -0.25rem;
+    width: 1.25rem; height: 1.25rem; line-height: 1.25rem; text-align: center;
+    font-size: 0.85rem; font-weight: 700; border-radius: 999px;
+    background: var(--color-primary); color: var(--color-background);
+  }
+}
+
+section#comments .comment {
+  .author {
+    grid-area: author; display: flex; align-items: center; gap: 0.5rem;
+    font-weight: 700; color: var(--color-content);
+
+    .instance {
+      font-weight: 400; font-size: 0.8rem; color: var(--color-inactive);
+      background: var(--color-surface); border-radius: 999px; padding: 0.1rem 0.6rem;
+      text-decoration: none;
+    }
+    .instance.op::before { content: "✓ "; }
+  }
+
+  > time { grid-area: time; }
+  > time a { color: var(--color-inactive); font-size: 0.85rem; text-decoration: none; }
+
+  > main { grid-area: body; color: var(--color-content); margin-top: 0.4rem; }
+  > main p:first-child { margin-top: 0; }
+  > main p:last-child { margin-bottom: 0; }
+
+  > footer { grid-area: foot; }
+  .faves { color: var(--color-inactive); text-decoration: none; font-size: 0.85rem; }
+  .faves::before { content: "♥ "; color: var(--color-code-err); }
+
+  .emoji { display: inline; width: 1.2em; height: 1.2em; vertical-align: middle; }
+  .invisible { display: none; }
+  .ellipsis::after { content: "…"; }
+}

@@ -1,0 +1,57 @@
+// ---------------------------------------------------------------------------
+// 1. Design tokens  (exposed as Tailwind utilities: text-content, bg-surface…)
+//    The @theme block is read by css.TailwindCSS after Sass has compiled this
+//    file; libsass passes the unknown at-rule through untouched.
+// ---------------------------------------------------------------------------
+@theme {
+  /* --- the 6 roles --- */
+  --color-primary: #9b8cf8;      /* violet — accent/brand, hover, focus, keyword  */
+  --color-content: #dcdce4;      /* body text, headings, strong, code text        */
+  --color-background: #1e1e24;   /* body, navbar, footer                          */
+  --color-link: #74d18c;         /* green  — unvisited links, strings             */
+  --color-visited: #9e8fbe;      /* lavender — visited links                      */
+  --color-inactive: #8c8c99;     /* meta, dates, borders, placeholders, comments  */
+
+  /* --- derived surfaces (Content over Background, opaque) --- */
+  --color-surface: #2d2d33;      /* Content @ 8%  — code/pre/toc/blockquote/tr    */
+  --color-border: #39393f;       /* Content @ 14% — hr, separators, borders       */
+  --color-surface-2: #34343b;    /* Content @ 12% — surface hover                 */
+
+  /* --- syntax tints (stay within violet/green) --- */
+  --color-code-fn: #a6e0b4;      /* functions/classes — light tint of Links       */
+  --color-code-num: #c3b8f5;     /* numbers/constants — light tint of Primary     */
+  --color-code-err: #e1808f;     /* errors/removed diff — the only extra, pre only*/
+
+  /* --- type --- */
+  --font-display: "Audiowide", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+  --font-signature: "Sig Font", "Ocean Trace", "Segoe Script", ui-rounded, cursive;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+  /* --- misc --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-panel: 0.75rem;
+}
+
+// ---------------------------------------------------------------------------
+// 2. Runtime custom properties  (for partials that use color-mix / opacity)
+// ---------------------------------------------------------------------------
+:root {
+  --c-primary: var(--color-primary);
+  --c-content: var(--color-content);
+  --c-background: var(--color-background);
+  --c-link: var(--color-link);
+  --c-visited: var(--color-visited);
+  --c-inactive: var(--color-inactive);
+  --c-surface: var(--color-surface);
+  --c-border: var(--color-border);
+  color-scheme: dark;
+}
+
+// ---------------------------------------------------------------------------
+// 3. Signature font ("written by a human")
+// The theme only sets --font-signature with a cursive fallback stack. To use
+// a real face, set params.fonts.signature (a font-file URL) — head.html then
+// emits the matching @font-face for "Sig Font". Or ship your own @font-face
+// via a custom stylesheet / custom-head.
+// ---------------------------------------------------------------------------

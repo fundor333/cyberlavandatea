@@ -1,0 +1,20 @@
+// ===========================================================================
+// CyberLavandaTea — SCSS entry
+// Compiled by Hugo (css.Sass / libsass) and then piped through
+// css.TailwindCSS — see layouts/_partials/head.html.
+//
+// The Tailwind entrypoint itself (@import "tailwindcss", @source, safelist)
+// lives in assets/css/main.css; this file only holds the theme rules, split
+// by concern. Dark-only. 6 semantic roles + one violet + one green. No other
+// hue in the chrome; surfaces and borders are mixes of Content/Primary over
+// Background.
+// ===========================================================================
+
+@import "tokens";           // 1-2. design tokens (@theme) + runtime custom props
+@import "base";             // 4.   base layer — HTML elements / prose
+@import "components";       // 5.   theme components — full layout in plain CSS
+@import "prose";            // 6.   prose (.e-content) vertical rhythm
+@import "syntax";           // 7.   syntax highlighting (Chroma)
+@import "pride";            // 8.   LGBTQ+ corner (pride.codes)
+@import "webmentions";      // 9.   webmentions + Mastodon comments
+@import "reduced-motion";   // 10.  reduced motion
