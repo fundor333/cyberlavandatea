@@ -2,7 +2,7 @@
 <div class="post-series my-6">
   {{- with (.GetTerms "series") -}}
   {{- range . -}}
-  <details class="toc" open>
+  <details class="toc">
     <summary><strong>{{ T "series.part_of" }} {{ .LinkTitle }}</strong></summary>
     <ol class="mt-2">
       {{- range .Pages.ByDate -}}
