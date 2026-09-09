@@ -24,8 +24,12 @@
   {{ end }}
   {{ end }}
 
-  {{/* --- CSS: Tailwind v4 via css.TailwindCSS --- */}}
-  {{ with resources.Get "css/main.css" }}
+  {{/* --- CSS: SCSS partials (css.Sass) → concat onto the Tailwind
+         entrypoint → css.TailwindCSS. The theme rules live in assets/scss/;
+         assets/css/main.css only holds @import "tailwindcss" + @source. --- */}}
+  {{ $entry := resources.Get "css/main.css" }}
+  {{ $sass := resources.Get "scss/main.scss" | css.Sass (dict "outputStyle" "expanded") }}
+  {{ with slice $entry $sass | resources.Concat "css/main.bundle.css" }}
     {{ $opts := dict "minify" hugo.IsProduction "inlineImports" true }}
     {{ with . | css.TailwindCSS $opts }}
       {{ if hugo.IsProduction }}

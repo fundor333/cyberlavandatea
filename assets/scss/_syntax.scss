@@ -1,0 +1,24 @@
+// ---------------------------------------------------------------------------
+// 7. Syntax highlighting (Chroma) — violet + green + 2 tints (+ 1 error)
+// ---------------------------------------------------------------------------
+.highlight { margin: 1.4rem 0; }
+
+.chroma {
+  background: var(--color-surface); color: var(--color-content); border-radius: var(--radius-panel);
+
+  .ln, .lnt { color: color-mix(in srgb, var(--color-inactive) 70%, transparent); }
+  .c, .ch, .cm, .c1, .cs { color: var(--color-inactive); font-style: italic; }
+  .cp, .cpf { color: var(--color-inactive); }
+  .k, .kd, .kn, .kp, .kr, .kt, .o, .ow { color: var(--color-primary); }
+  .s, .sa, .sb, .sc, .dl, .sd, .s2,
+  .se, .sh, .si, .sx, .sr, .s1, .ss { color: var(--color-link); }
+  .nf, .fm, .nc, .nn, .na, .nt { color: var(--color-code-fn); }
+  .m, .mb, .mf, .mh, .mi, .il, .mo, .kc { color: var(--color-code-num); }
+  .nb, .bp, .nv, .vc, .vg, .vi { color: var(--color-content); }
+  .gi { color: var(--color-link); }
+  .gd, .err { color: var(--color-code-err); }
+  .gh, .gu { color: var(--color-primary); font-weight: 700; }
+  .gs { font-weight: 700; }
+  .ge { font-style: italic; }
+  .hl { background: color-mix(in srgb, var(--color-primary) 16%, transparent); }
+}
