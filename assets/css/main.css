@@ -78,6 +78,7 @@
   html {
     -webkit-text-size-adjust: 100%;
     scrollbar-color: var(--color-inactive) var(--color-background);
+    overflow-x: hidden;
   }
 
   body {
@@ -89,6 +90,7 @@
     font-size: 1.0625rem;
     line-height: 1.65;
     min-height: 100vh;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "kern" 1;
   }
@@ -174,7 +176,7 @@
   .py-8 { padding-block: 2rem; }
 
   /* Navbar */
-  .navbar { border-bottom: 1px solid var(--color-border); }
+  .navbar { position: relative; z-index: 10000; border-bottom: 1px solid var(--color-border); }
   .navbar nav {
     max-width: 46rem; margin-inline: auto; padding: 1rem 1.25rem;
     display: flex; align-items: center; gap: 1.5rem;
@@ -194,9 +196,11 @@
   .lang-list { background: var(--color-surface); color: var(--color-content); border: 1px solid var(--color-border); border-radius: 4px; padding: 2px 4px; }
 
   @media (max-width: 639px) {
-    .navbar label[for="menu-trigger"] { display: inline-flex; margin-left: auto; cursor: pointer; }
+    .navbar nav { flex-wrap: wrap; justify-content: center; position: relative; }
+    .navbar .brand { position: absolute; left: 1.25rem; }
+    .navbar label[for="menu-trigger"] { display: inline-flex; margin: 0; cursor: pointer; }
     .navbar .trigger { margin-left: 0; width: 100%; }
-    .navbar .trigger-container { flex-direction: column; align-items: flex-start; gap: 0.75rem; width: 100%; }
+    .navbar .trigger-container { flex-direction: column; align-items: center; text-align: center; gap: 0.75rem; width: 100%; }
     .navbar .menu-trigger:not(:checked) ~ .trigger { display: none; }
   }
 
@@ -205,7 +209,7 @@
   .post-list { margin-top: 0.5rem; }
   .post-item { padding: 0.85rem 0; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
   .post-item + .post-item { border-top: 1px solid var(--color-border); }
-  .post-item-title { margin: 0; font-size: 1rem; font-weight: 400; }
+  .post-item-title { margin: 0; min-width: 0; overflow-wrap: break-word; font-size: 1rem; font-weight: 400; }
   .post-item-title a { font-family: var(--font-display); text-decoration: none; }
   .post-item-icon { color: var(--color-primary); margin-right: 0.4rem; display: inline-block; width: 1.15em; text-align: center; }
   h1 .post-item-icon { width: auto; margin-right: 0.5rem; }
