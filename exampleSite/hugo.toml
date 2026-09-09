@@ -95,6 +95,14 @@ enableGitInfo = false
     showLocation = true
     city = "Venice"
     country = "IT"
+    status = "open to freelance"
+    statusUrl = "https://example.org/hire/"
+    showStatus = true
+    showPronouns = true
+    [params.hcard.pronouns]
+      nominative = "they"
+      oblique = "them"
+      possessive = "their"
 
   [[params.socialIcons]]
     name = "github"

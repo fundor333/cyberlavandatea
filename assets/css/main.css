@@ -241,6 +241,9 @@
 
   /* Footer */
   .footer { margin-top: 4rem; border-top: 1px solid var(--color-border); padding: 2rem 0; text-align: center; }
+  .h-card .p-note { margin: 0.5rem 0 0; }
+  .h-card .hcard-status { color: var(--color-inactive); }
+  .h-card a.hcard-status { color: var(--color-link); }
   .footer_social-icons { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin: 1rem 0; }
   .social-icon { color: var(--color-inactive); }
   .social-icon:hover { color: var(--color-primary); }

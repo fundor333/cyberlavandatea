@@ -175,7 +175,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Asset pipeline: **Tailwind v4** → `minify` → `fingerprint`+`integrity`; `theme.js` in the head, `main.js`+`goToTop` at the end, `additionalScripts` | `_partials/head.html`, `_partials/scripts-*.html` |
 | Nav: `Site.Menus.main` with children and `active` state, CSS-only hamburger, language switcher, "back to top" | `_partials/header.html`, `_partials/footer.html`, `assets/js/goToTop.js` |
 | `postCard` with a per-type icon, starred, speaker, `<time datetime>` | `_partials/postCard.html`, `_partials/type-icon.html` |
-| Bio + **h-card** (pronouns, nickname, location) | `_partials/bio.html`, `_partials/hcard.html` |
+| Bio + **h-card** — footer identity line: name, pronouns, nickname, location, status; each of pronouns / location / status toggled from config | `_partials/bio.html`, `_partials/hcard.html` |
 | i18n | `i18n/en.yaml`, `i18n/it.yaml` |
 | Feeds: RSS (`exclude_from_rss`, `summary`/`full`, `media` namespace), **Atom** (`feedUUID`, `webfeeds`), **JSON Feed 1.1**, **humans.txt**, dynamic **robots.txt** | `layouts/rss.xml`, `list.atom.xml`, `list.json.json`, `index.humanstxt.txt`, `robots.txt` |
 | Search: `SearchIndex` output → `/search.json`, `/search` section, `?q=` form, **Lunr** index, `<template>` rendering | `layouts/index.searchindex.json`, `layouts/search/list.html`, `_partials/search-*.html`, `assets/js/search.js` |
@@ -265,9 +265,14 @@ KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
     name = "" ; intro = "" ; description = "" ; url = "" ; email = ""
     fediverseAccount = "@user@instance"
 
-  [params.hcard]
-    fullName = "" ; nickname = "" ; avatar = "img/logo.png"
-    showLocation = true ; city = "" ; region = "" ; country = ""
+  [params.hcard]                    # the footer h-card
+    fullName = "" ; nickname = "" ; avatar = "img/logo.png" ; biography = ""
+    showPronouns = true             # hide the pronouns with `false`
+    showLocation = true             # opt-in; shows city/region/country
+    city = "" ; region = "" ; country = ""
+    status = ""                     # short status line, e.g. "open to freelance"
+    statusUrl = ""                  # optional link for the status
+    showStatus = true               # hide the status with `false`
     [params.hcard.pronouns]
       nominative = "" ; oblique = "" ; possessive = ""
 

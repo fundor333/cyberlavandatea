@@ -1,11 +1,23 @@
+{{- /* Footer h-card. All of it comes from site.Params.hcard:
+     fullName, avatar, nickname, biography
+     pronouns { nominative, oblique, possessive }  + showPronouns (default true)
+     city / region / country                       + showLocation (default false)
+     status [+ statusUrl]                           + showStatus  (default true)
+   Each of pronouns / location / status is shown only when its data is present
+   AND its show* toggle is not false. */ -}}
 {{- with site.Params.hcard -}}
+{{- $h := . -}}
+{{- $pronouns := and $h.pronouns (ne $h.showPronouns false) -}}
+{{- $location := and $h.showLocation (or $h.city $h.region $h.country) -}}
+{{- $status := and $h.status (ne $h.showStatus false) -}}
 <div class="h-card author text-sm text-inactive">
   <a class="u-url u-uid" href="{{ site.BaseURL }}" hidden></a>
-  {{ with .avatar }}<img class="u-photo" src="{{ . | absURL }}" alt="" hidden>{{ end }}
-  <span class="p-name" rel="me">{{ .fullName | default site.Params.author.name }}</span>
-  {{- with .pronouns }} (<span class="p-pronoun-nominative">{{ .nominative }}</span>/<span class="p-pronoun-oblique">{{ .oblique }}</span>/<span class="p-pronoun-possessive">{{ .possessive }}</span>){{ end -}}
-  {{- with .nickname }} — <span class="p-nickname">{{ . }}</span>{{ end -}}
-  {{- if .showLocation }} · {{ with .city }}<span class="p-locality">{{ . }}</span>{{ end }}{{ with .region }}, <span class="p-region">{{ . }}</span>{{ end }}{{ with .country }}, <span class="p-country-name">{{ . }}</span>{{ end }}{{ end -}}
-  {{- with .biography }}<p class="p-note">{{ . | markdownify }}</p>{{ end -}}
+  {{ with $h.avatar }}<img class="u-photo" src="{{ . | absURL }}" alt="" hidden>{{ end }}
+  <span class="p-name" rel="me">{{ $h.fullName | default site.Params.author.name }}</span>
+  {{- if $pronouns }} (<span class="p-pronoun-nominative">{{ $h.pronouns.nominative }}</span>/<span class="p-pronoun-oblique">{{ $h.pronouns.oblique }}</span>/<span class="p-pronoun-possessive">{{ $h.pronouns.possessive }}</span>){{ end -}}
+  {{- with $h.nickname }} — <span class="p-nickname">{{ . }}</span>{{ end -}}
+  {{- if $location }} · {{ with $h.city }}<span class="p-locality">{{ . }}</span>{{ end }}{{ with $h.region }}{{ if $h.city }}, {{ end }}<span class="p-region">{{ . }}</span>{{ end }}{{ with $h.country }}{{ if or $h.city $h.region }}, {{ end }}<span class="p-country-name">{{ . }}</span>{{ end }}{{ end -}}
+  {{- if $status }} · {{ with $h.statusUrl }}<a class="hcard-status" href="{{ . }}" rel="me">{{ $h.status }}</a>{{ else }}<span class="hcard-status">{{ $h.status }}</span>{{ end }}{{ end -}}
+  {{- with $h.biography }}<p class="p-note">{{ . | markdownify }}</p>{{ end -}}
 </div>
 {{- end -}}

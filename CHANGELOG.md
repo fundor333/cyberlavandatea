@@ -5,6 +5,14 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+- Footer h-card: **pronouns**, **location** and a new **status** line are each
+  configurable and independently toggleable — `params.hcard.showPronouns`,
+  `showLocation`, `showStatus` (default on when their data is present), plus
+  `status` / `statusUrl`.
+
+## [0.1.0]
+
 ### Added
 - Initial release of **CyberLavandaTea**: a dark-only Hugo theme for dev/code
   blogs, built with Tailwind CSS v4.
