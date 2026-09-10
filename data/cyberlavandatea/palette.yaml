@@ -1,20 +1,20 @@
-# CyberLavandaTea palette — reference (the source of truth is assets/css/main.css @theme).
-# Dark-only, 6 roles + one violet + one green. Contrast ratios are against Background #1E1E24.
+# CyberLavandaTea palette — reference (the source of truth is assets/scss/_tokens.scss @theme).
+# Dark-only, 6 roles + one green + one blue. Contrast ratios are against Background #14151A.
 roles:
-  primary:    { hex: "#9B8CF8", role: "violet — accent, hover, focus, keyword",     contrast: "5.9:1" }
-  content:    { hex: "#DCDCE4", role: "text, headings, strong, code text",           contrast: "12.2:1 (AAA)" }
-  link:       { hex: "#74D18C", role: "green — unvisited links, strings",            contrast: "8.9:1 (AAA)" }
-  visited:    { hex: "#9E8FBE", role: "lavender — visited links",                    contrast: "5.6:1" }
-  background: { hex: "#1E1E24", role: "body, navbar, footer" }
-  inactive:   { hex: "#8C8C99", role: "meta, dates, borders, placeholders, comments", contrast: "5.0:1 (AA)" }
+  primary:    { hex: "#5FD88F", role: "green — accent, hover, focus, keyword",       contrast: "10.2:1 (AAA)" }
+  content:    { hex: "#E6E6EC", role: "text, headings, strong, code text",           contrast: "14.7:1 (AAA)" }
+  link:       { hex: "#4D9FFF", role: "blue — unvisited links, strings",             contrast: "6.7:1 (AA)" }
+  visited:    { hex: "#7EA88E", role: "sage — visited links",                        contrast: "6.8:1 (AA)" }
+  background: { hex: "#14151A", role: "body, navbar, footer" }
+  inactive:   { hex: "#8B8F9A", role: "meta, dates, borders, placeholders, comments", contrast: "5.6:1 (AA)" }
 derived:
-  surface:  "#2D2D33"  # Content @ 8% over Background — code/pre/toc/blockquote
-  border:   "#39393F"  # Content @ 14% over Background — hr, separators
+  surface:  "#25262B"  # Content @ 8% over Background — code/pre/toc/blockquote
+  border:   "#313237"  # Content @ 14% over Background — hr, separators
 syntax:
-  fn:  "#A6E0B4"  # light tint of link
-  num: "#C3B8F5"  # light tint of primary
-  err: "#E1808F"  # red, the only extra hue, inside <pre> only
+  fn:  "#A8C9FF"  # light tint of link
+  num: "#8FE0AF"  # light tint of primary
+  err: "#FF6F6F"  # red, the only extra hue, inside <pre> only
 fonts:
   display: "Audiowide"        # headings, links, strong, footer
   body: "Rajdhani"            # body text
-  signature: "Ocean Trace"    # .written-by-human
+  signature: "Sig Font"       # .written-by-human — set via params.fonts.signature, cursive fallback otherwise

@@ -3,8 +3,8 @@
   "short_name": "CLT",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1e1e24",
-  "theme_color": "#1e1e24",
+  "background_color": "#14151a",
+  "theme_color": "#14151a",
   "icons": [
     { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
   ]
