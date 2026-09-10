@@ -5,6 +5,8 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-10
+
 ### Changed
 - Accent palette switched from violet to **green** (`--color-primary`
   `#5FD88F`) with **blue** (`--color-link` `#4D9FFF`) as the link/signal
