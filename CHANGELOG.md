@@ -6,6 +6,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Changed
+- Accent palette switched from violet to **green** (`--color-primary`
+  `#5FD88F`) with **blue** (`--color-link` `#4D9FFF`) as the link/signal
+  hue; background, content, visited, inactive and the derived
+  surfaces/borders were all darkened and rebalanced for higher contrast.
+  See `docs/style-guide.md`.
 - Footer h-card: **pronouns**, **location** and a new **status** line are each
   configurable and independently toggleable — `params.hcard.showPronouns`,
   `showLocation`, `showStatus` (default on when their data is present), plus

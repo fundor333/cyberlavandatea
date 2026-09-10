@@ -1,7 +1,7 @@
 # CyberLavandaTea
 
 A **dark-only Hugo theme** for dev / code blogs.
-**Tailwind CSS v4**, a **6-role palette** (one violet, one green), an
+**Tailwind CSS v4**, a **6-role palette** (one blue, one green), an
 **IndieWeb / POSSE** stack, multiple feeds, client-side search.
 
 - Dark only, by design — there is no light toggle. `assets/js/theme.js` locks
@@ -139,18 +139,18 @@ Defined once in [`assets/css/main.css`](assets/css/main.css) inside the Tailwind
 
 | Role | Tailwind token | Hex | Use |
 |---|---|---|---|
-| Primary *(violet)* | `--color-primary` | `#9B8CF8` | accent, `:hover`/`:focus`, active nav, focus ring, `blockquote` border, keyword |
-| Content | `--color-content` | `#DCDCE4` | body text, headings, `strong`, code text |
-| Links *(green)* | `--color-link` | `#74D18C` | unvisited links, strings, added diff |
-| Visited | `--color-visited` | `#9E8FBE` | `a:visited` |
-| Background | `--color-background` | `#1E1E24` | `body`, navbar, footer |
-| Inactive | `--color-inactive` | `#8C8C99` | meta, dates, borders, placeholders, comments |
-| *(derived)* Surface | `--color-surface` | `#2D2D33` | `code`/`pre`/`.toc`/`blockquote`/`tr:nth-child(even)` |
-| *(derived)* Border | `--color-border` | `#39393F` | `hr`, separators, borders |
+| Primary *(green)* | `--color-primary` | `#5FD88F` | accent, `:hover`/`:focus`, active nav, focus ring, `blockquote` border, keyword |
+| Content | `--color-content` | `#E6E6EC` | body text, headings, `strong`, code text |
+| Links *(blue)* | `--color-link` | `#4D9FFF` | unvisited links, strings, added diff |
+| Visited | `--color-visited` | `#7EA88E` | `a:visited` |
+| Background | `--color-background` | `#14151A` | `body`, navbar, footer |
+| Inactive | `--color-inactive` | `#8B8F9A` | meta, dates, borders, placeholders, comments |
+| *(derived)* Surface | `--color-surface` | `#25262B` | `code`/`pre`/`.toc`/`blockquote`/`tr:nth-child(even)` |
+| *(derived)* Border | `--color-border` | `#313237` | `hr`, separators, borders |
 
-Chroma syntax highlighting stays within violet + green plus two tints
-(`--color-code-fn` `#A6E0B4`, `--color-code-num` `#C3B8F5`) plus one optional red
-for errors (`--color-code-err` `#E1808F`), inside `<pre>` only.
+Chroma syntax highlighting stays within green + blue plus two tints
+(`--color-code-fn` `#A8C9FF`, `--color-code-num` `#8FE0AF`) plus one optional red
+for errors (`--color-code-err` `#FF6F6F`), inside `<pre>` only.
 
 Fonts are loaded from Google Fonts in `_partials/head.html` from `params.fonts`
 (`display` = Audiowide, `body` = Rajdhani; optional `signature` font-file URL for
@@ -191,7 +191,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Content-type icons ("category") with Font Awesome (Kit or free CDN), `params.postIcons` override | `_partials/fontawesome.html`, `_partials/type-icon.html`, `_partials/postCard.html` |
 | **LGBTQ+ corner** (pride.codes, top-right), opt-in `params.prideCorner` (default `false`) | `_partials/pride-corner.html` |
 | Small-web extras: **88×31** badges (folder + JSON, shuffled), **webring** (`webring.html`: icon / prev-next / web component), **"reference this post"** box (configurable preferred name / pronouns / "learn more" link + copy-URL), "written by a human", **backlinks** (`findRE`), **related** ("See Also") | `_partials/88x31.html`, `_partials/webring.html`, `_partials/cite.html`, `_partials/inbound-links.html`, `_partials/comments.html`, `footer.html` |
-| Palette / theming: 6 roles + surfaces derived by opacity, Chroma within violet/green | `assets/css/main.css` |
+| Palette / theming: 6 roles + surfaces derived by opacity, Chroma within green/blue | `assets/css/main.css` |
 
 KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
 (`hugo.IsProduction` + `site.GoogleAnalytics`) are wired up too.
@@ -217,7 +217,7 @@ KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
   cite = true                       # bool, or a [params.cite] table (below)
   badges88x31 = true
   additionalScripts = []            # extra JS assets, bundled + minified
-  themeColor = "#1e1e24"
+  themeColor = "#14151a"
   feedUUID = ""                     # urn:uuid for the Atom feed
   images = ["/img/og.png"]          # fallback og:image
   prideCorner = false               # pride.codes corner top-right (opt-in)

@@ -5,22 +5,22 @@
 // ---------------------------------------------------------------------------
 @theme {
   /* --- the 6 roles --- */
-  --color-primary: #9b8cf8;      /* violet — accent/brand, hover, focus, keyword  */
-  --color-content: #dcdce4;      /* body text, headings, strong, code text        */
-  --color-background: #1e1e24;   /* body, navbar, footer                          */
-  --color-link: #74d18c;         /* green  — unvisited links, strings             */
-  --color-visited: #9e8fbe;      /* lavender — visited links                      */
-  --color-inactive: #8c8c99;     /* meta, dates, borders, placeholders, comments  */
+  --color-primary: #5fd88f;      /* green — accent/brand, hover, focus, keyword   */
+  --color-content: #e6e6ec;      /* body text, headings, strong, code text        */
+  --color-background: #14151a;   /* body, navbar, footer                          */
+  --color-link: #4d9fff;         /* blue   — unvisited links, strings             */
+  --color-visited: #7ea88e;      /* sage   — visited links                        */
+  --color-inactive: #8b8f9a;     /* meta, dates, borders, placeholders, comments  */
 
   /* --- derived surfaces (Content over Background, opaque) --- */
-  --color-surface: #2d2d33;      /* Content @ 8%  — code/pre/toc/blockquote/tr    */
-  --color-border: #39393f;       /* Content @ 14% — hr, separators, borders       */
-  --color-surface-2: #34343b;    /* Content @ 12% — surface hover                 */
+  --color-surface: #25262b;      /* Content @ 8%  — code/pre/toc/blockquote/tr    */
+  --color-border: #313237;       /* Content @ 14% — hr, separators, borders       */
+  --color-surface-2: #2d2e33;    /* Content @ 12% — surface hover                 */
 
-  /* --- syntax tints (stay within violet/green) --- */
-  --color-code-fn: #a6e0b4;      /* functions/classes — light tint of Links       */
-  --color-code-num: #c3b8f5;     /* numbers/constants — light tint of Primary     */
-  --color-code-err: #e1808f;     /* errors/removed diff — the only extra, pre only*/
+  /* --- syntax tints (stay within green/blue) --- */
+  --color-code-fn: #a8c9ff;      /* functions/classes — light tint of Links       */
+  --color-code-num: #8fe0af;     /* numbers/constants — light tint of Primary     */
+  --color-code-err: #ff6f6f;     /* errors/removed diff — the only extra, pre only*/
 
   /* --- type --- */
   --font-display: "Audiowide", ui-sans-serif, system-ui, sans-serif;

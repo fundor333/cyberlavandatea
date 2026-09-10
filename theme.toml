@@ -1,7 +1,7 @@
 name = "CyberLavandaTea"
 license = "MIT"
 licenselink = "https://github.com/fundor333/cyberlavandatea/blob/main/LICENSE"
-description = "Dark-only Hugo theme for dev/code blogs — Tailwind v4, a 6-role palette (one violet, one green), IndieWeb / POSSE, multiple feeds, client-side search."
+description = "Dark-only Hugo theme for dev/code blogs — Tailwind v4, a 6-role palette (one blue, one green), IndieWeb / POSSE, multiple feeds, client-side search."
 
 homepage = "https://github.com/fundor333/cyberlavandatea/"
 demosite = "https://fundor333.github.io/cyberlavandatea/"

@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths: [CHANGELOG.md]
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Force a bump type instead of inferring it from CHANGELOG.md"
+        type: choice
+        default: auto
+        options: [auto, patch, minor, major]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # A bot-authored push must NOT be made with GITHUB_TOKEN, or it
+          # won't trigger other workflows (CI, Pages). Use a PAT if one is
+          # configured; otherwise fall back to GITHUB_TOKEN (release still
+          # works, CI/Pages just won't re-run for the bump commit).
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Cut release from CHANGELOG.md
+        id: cut
+        env:
+          BUMP: ${{ inputs.bump || 'auto' }}
+        run: python3 .github/scripts/cut_release.py
+
+      - name: Commit version bump
+        if: steps.cut.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md package.json
+          git commit -m "chore(release): v${{ steps.cut.outputs.version }}"
+          git tag "v${{ steps.cut.outputs.version }}"
+          git push origin HEAD:main
+          git push origin "v${{ steps.cut.outputs.version }}"
+
+      - name: Create GitHub release
+        if: steps.cut.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ steps.cut.outputs.version }}" \
+            --title "v${{ steps.cut.outputs.version }}" \
+            --notes-file release-notes.md

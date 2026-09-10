@@ -65,10 +65,10 @@ weight = 90
 
 # --- Params -----------------------------------------------------------------
 [params]
-description = "CyberLavandaTea demo — a dark, violet + green Hugo theme for dev blogs."
+description = "CyberLavandaTea demo — a dark, blue + green Hugo theme for dev blogs."
 dateFormat = "2 January 2006"
 linkUTM = false
-themeColor = "#1e1e24"
+themeColor = "#14151a"
 prideCorner = true                                                                      # LGBTQ+ corner (theme default: false)
 # Font Awesome: with no kit set, the free cdnjs CSS is used (content-type icons).
 # Favicons: with none configured the theme falls back to its bundled favicon.svg.
