@@ -42,7 +42,7 @@ commit_preprocessors = [
 
 commit_parsers = [
     { message = "^feat", group = "Added" },
-    { message = "^fix", group = "Fixed" },
+    { message = "^fix", group = "Hotfix" },
     { message = "^refactor", group = "Changed" },
     { message = "^perf", group = "Changed" },
     { message = "^style", group = "Changed" },

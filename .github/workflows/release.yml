@@ -7,7 +7,7 @@ on:
         description: "Force a bump type instead of inferring it from Conventional Commits"
         type: choice
         default: auto
-        options: [auto, patch, minor, major]
+        options: [auto, hotfix, patch, minor, major]
 
 permissions:
   contents: write
@@ -53,7 +53,7 @@ jobs:
             case "$BUMP" in
               major) VERSION="$((MAJOR + 1)).0.0" ;;
               minor) VERSION="$MAJOR.$((MINOR + 1)).0" ;;
-              patch) VERSION="$MAJOR.$MINOR.$((PATCH + 1))" ;;
+              patch|hotfix) VERSION="$MAJOR.$MINOR.$((PATCH + 1))" ;;
               *) echo "Unknown bump type: $BUMP" >&2; exit 1 ;;
             esac
           fi
