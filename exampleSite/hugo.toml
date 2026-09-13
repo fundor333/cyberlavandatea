@@ -59,6 +59,10 @@ name = "Now"
 url = "/now/"
 weight = 40
 [[menu.main]]
+name = "Style Guide"
+url = "/style-guide/"
+weight = 50
+[[menu.main]]
 name = "Search"
 url = "/search/"
 weight = 90
