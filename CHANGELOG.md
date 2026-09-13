@@ -3,6 +3,18 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.1] - 2026-09-13
+
+### Added
+
+- Add a comprehensive style guide for theme elements
+- Add hotfix bump option and changelog group
+
+### Hotfix
+
+- Sync palette.yaml and web manifest to current green/blue tokens
+- Update version to 1.1.1 in package.json
+
 ## [1.1.0] - 2026-09-10
 
 ### Added
@@ -27,7 +39,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
 - Introduce detailed style guide for theme visual language
 
-### Fixed
+### Hotfix
 
 - Update data source references in 88x31 badges and humanstxt
 - Update Mastodon username for comments section
