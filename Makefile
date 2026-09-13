@@ -9,7 +9,7 @@ CLIFF    ?= git-cliff
 
 .DEFAULT_GOAL := dev
 
-.PHONY: install dev serve build regenerate clean version bump changelog release tag
+.PHONY: install dev serve build regenerate clean version bump changelog release tag major minor hotfix
 
 # Install the exampleSite JS deps (tailwindcss CLI). Re-runs only when
 # package.json changes relative to the installed node_modules.
@@ -68,3 +68,17 @@ release: bump changelog
 tag:
 	@test -n "$(VERSION)" || (echo "usage: make tag VERSION=X.Y.Z" >&2; exit 1)
 	git tag -a "v$(VERSION)" -m "v$(VERSION)"
+
+# --- Cutting a release via the Release workflow -------------------------
+# make major / make minor / make hotfix: validate the site still builds,
+# then dispatch .github/workflows/release.yml with a forced bump type. The
+# workflow itself computes the next version, updates CHANGELOG.md and
+# package.json, commits, tags, pushes to main and creates the GitHub
+# Release — nothing is bumped or pushed locally, so version state has a
+# single source of truth.
+major minor hotfix: build
+	@command -v gh >/dev/null || (echo "gh (GitHub CLI) is required: https://cli.github.com" >&2; exit 1)
+	gh workflow run release.yml -f bump=$@
+	@sleep 2
+	@echo "Triggered $@ release. Watching the run:"
+	gh run watch "$$(gh run list --workflow=release.yml --limit=1 --json databaseId --jq '.[0].databaseId')"

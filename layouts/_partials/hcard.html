@@ -12,7 +12,7 @@
 {{- $status := and $h.status (ne $h.showStatus false) -}}
 <div class="h-card author text-sm text-inactive">
   <a class="u-url u-uid" href="{{ site.BaseURL }}" hidden></a>
-  {{ with $h.avatar }}<img class="u-photo" src="{{ . | absURL }}" alt="" hidden>{{ end }}
+  {{ with $h.avatar }}<img class="u-photo" src="{{ . | absURL }}" alt="" loading="lazy" hidden>{{ end }}
   <span class="p-name" rel="me">{{ $h.fullName | default site.Params.author.name }}</span>
   {{- if $pronouns }} (<span class="p-pronoun-nominative">{{ $h.pronouns.nominative }}</span>/<span class="p-pronoun-oblique">{{ $h.pronouns.oblique }}</span>/<span class="p-pronoun-possessive">{{ $h.pronouns.possessive }}</span>){{ end -}}
   {{- with $h.nickname }} — <span class="p-nickname">{{ . }}</span>{{ end -}}

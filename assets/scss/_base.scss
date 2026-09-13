@@ -98,6 +98,7 @@
   tbody tr:nth-child(even) { background: var(--color-surface); }
 
   img { max-width: 100%; height: auto; }
+  .center-img { display: block; margin-left: auto; margin-right: auto; }
   figure { margin: 1.4rem 0; }
   figcaption { color: var(--color-inactive); font-size: 0.9em; margin-top: 0.4rem; text-align: center; }
 
