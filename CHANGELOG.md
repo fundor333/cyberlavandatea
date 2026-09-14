@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.2.0] - 2026-09-14
+
+### Added
+
+- Show social icons on the home page, fix invisible icon glyphs, add configurable IndieAuth endpoints
+
 ## [1.1.5] - 2026-09-14
 
 ### Other
