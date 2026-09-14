@@ -2,6 +2,12 @@
 <main class="wrapper py-8" aria-label="{{ T "content" }}">
   {{ partial "bio.html" . }}
 
+  {{ with site.Params.socialIcons }}
+  <div class="home-social-icons my-4 flex flex-wrap gap-3">
+    {{ partial "socialIcons.html" . }}
+  </div>
+  {{ end }}
+
   {{ $count := int (site.Params.homeRecentCount | default 20) }}
   {{ $main := where site.RegularPages "Type" "in" (site.Params.mainSections | default (slice "post")) }}
   {{ $main = $main.ByDate.Reverse }}

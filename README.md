@@ -176,6 +176,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Nav: `Site.Menus.main` with children and `active` state, CSS-only hamburger, language switcher, "back to top" | `_partials/header.html`, `_partials/footer.html`, `assets/js/goToTop.js` |
 | `postCard` with a per-type icon, starred, speaker, `<time datetime>` | `_partials/postCard.html`, `_partials/type-icon.html` |
 | Bio + **h-card** — footer identity line: name, pronouns, nickname, location, status; each of pronouns / location / status toggled from config | `_partials/bio.html`, `_partials/hcard.html` |
+| Social icons (`params.socialIcons`) rendered on the home page (below the bio) and in the footer | `_partials/socialIcons.html`, `layouts/home.html`, `_partials/footer.html` |
 | i18n | `i18n/en.yaml`, `i18n/it.yaml` |
 | Feeds: RSS (`exclude_from_rss`, `summary`/`full`, `media` namespace), **Atom** (`feedUUID`, `webfeeds`), **JSON Feed 1.1**, **humans.txt**, dynamic **robots.txt** | `layouts/rss.xml`, `list.atom.xml`, `list.json.json`, `index.humanstxt.txt`, `robots.txt` |
 | Search: `SearchIndex` output → `/search.json`, `/search` section, `?q=` form, **Lunr** index, `<template>` rendering | `layouts/index.searchindex.json`, `layouts/search/list.html`, `_partials/search-*.html`, `assets/js/search.js` |
@@ -183,6 +184,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Microformats2: `h-entry` / `e-content` / `u-photo` / `p-category` / `dt-published`; response types reply/repost/like/bookmark/rsvp | `layouts/single.html`, `_partials/micro.html` |
 | Favicons entirely from config (`favicon`, `faviconSvg`, `appleTouchIcon`, `icon96`, `webmanifest`, `maskIcon`) | `_partials/favicons.html` |
 | **Webmention**: `rel=webmention`/`pingback` + the webmention.io client rendering a reactions facepile and inline comments into `#webmentions` (styled) | `_partials/webmention.html`, `_partials/custom-head.html`, `assets/css/main.css` |
+| **IndieAuth**: `rel=authorization_endpoint`/`token_endpoint`, configurable (`params.indieauth`), default `https://indieauth.com` | `_partials/head.html` |
 | **Mastodon comments** (fetch `/context` + DOMPurify) + build-time toot embed | `_partials/mastodon.html`, `_partials/toot.html` |
 | **Brid.gy Publish** with configurable targets + UTM | `_partials/bridgy.html` |
 | **Syndication** ("also posted on") | `_partials/syndication.html` |
@@ -288,10 +290,18 @@ KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
     # Renders <h2>Responses</h2> + <h2>Reactions</h2> into #webmentions, and emits
     # <link rel="webmention"> / <link rel="pingback">.
 
+  [params.indieauth]                # <link rel=authorization_endpoint/token_endpoint>
+    enable                = true    # opt out with `false`
+    authorizationEndpoint = "https://indieauth.com"
+    tokenEndpoint         = "https://indieauth.com"
+
   bridgy = ["mastodon", "bluesky"]
 
+  # Rendered on the home page (below the bio) and in the footer.
   [[params.socialIcons]]
     name = "github" ; url = "https://github.com/user"
+  [[params.socialIcons]]
+    name = "mastodon" ; url = "https://mastodon.social/@user"
 
   # Footer webring(s) (partial webring.html). Each entry:
   #   name, url            plain link

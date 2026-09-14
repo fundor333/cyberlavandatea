@@ -15,6 +15,13 @@
   <link rel="pingback" href="{{ .pingback | default (printf "https://webmention.io/%s/xmlrpc" .targetDomain) }}" />
   {{ end }}
 
+  {{/* --- IndieAuth (opt out with params.indieauth.enable = false) --- */}}
+  {{ $indieauth := site.Params.indieauth | default (dict) }}
+  {{ if ne $indieauth.enable false }}
+  <link rel="authorization_endpoint" href="{{ $indieauth.authorizationEndpoint | default "https://indieauth.com" }}">
+  <link rel="token_endpoint" href="{{ $indieauth.tokenEndpoint | default "https://indieauth.com" }}">
+  {{ end }}
+
 
   {{/* --- Canonical + feed --- */}}
   <link rel="canonical" href="{{ .Permalink }}">

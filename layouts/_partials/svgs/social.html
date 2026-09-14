@@ -1,8 +1,31 @@
-{{- /* Generic social icon: <use> against an optional site sprite at
-       /icons/social.svg, with a screen-reader label as fallback. */ -}}
+{{- /* Social icon via Font Awesome (brand classes, with a few solid
+       fallbacks for non-brand types like rss/email). Needs Font Awesome
+       loaded (see _partials/fontawesome.html); disabled via
+       params.fontawesome.disable renders no glyph, same as type-icon.html.
+       Override a single entry with `icon = "fa-brands fa-foo"` on the
+       socialIcons entry, or the whole map via site.Params.socialIconsMap. */ -}}
 {{- $name := (.name | default "link") | lower -}}
-{{- $sprite := "/icons/social.svg" -}}
-<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
-  <use href="{{ $sprite }}#{{ $name }}"></use>
-</svg>
+{{- $default := dict
+  "mastodon"  "fa-brands fa-mastodon"
+  "bluesky"   "fa-brands fa-bluesky"
+  "github"    "fa-brands fa-github"
+  "gitlab"    "fa-brands fa-gitlab"
+  "twitter"   "fa-brands fa-x-twitter"
+  "x"         "fa-brands fa-x-twitter"
+  "linkedin"  "fa-brands fa-linkedin"
+  "instagram" "fa-brands fa-instagram"
+  "youtube"   "fa-brands fa-youtube"
+  "facebook"  "fa-brands fa-facebook"
+  "discord"   "fa-brands fa-discord"
+  "telegram"  "fa-brands fa-telegram"
+  "reddit"    "fa-brands fa-reddit"
+  "twitch"    "fa-brands fa-twitch"
+  "keybase"   "fa-brands fa-keybase"
+  "email"     "fa-solid fa-envelope"
+  "rss"       "fa-solid fa-rss"
+  "link"      "fa-solid fa-link"
+-}}
+{{- $map := merge $default (site.Params.socialIconsMap | default dict) -}}
+{{- $cls := .icon | default (index $map $name) | default (index $map "link") -}}
+<i class="social-icon-glyph {{ $cls }}" aria-hidden="true"></i>
 <span class="sr-only">{{ .name | default "link" }}</span>
