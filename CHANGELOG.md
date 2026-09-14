@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.3] - 2026-09-14
+
+### Hotfix
+
+- Improve readability of post metadata and secondary content
+
 ## [1.1.2] - 2026-09-13
 
 ### Added
