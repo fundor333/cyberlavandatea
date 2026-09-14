@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.5] - 2026-09-14
+
+### Other
+
+- Fix 8 space in the ""
+
 ## [1.1.4] - 2026-09-14
 
 ### Added
