@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.4] - 2026-09-14
+
+### Added
+
+- Add custom head partial for webmention and pingback support
+
 ## [1.1.3] - 2026-09-14
 
 ### Hotfix
