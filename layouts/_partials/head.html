@@ -17,14 +17,19 @@
 
   {{/* --- IndieAuth (opt-in: only emitted when params.indieauth is set,
   and not disabled via params.indieauth.enable = false). Defaults to
-  indielogin.com, the service indieauth.com's own docs now point to as
-  its replacement. Override authorizationEndpoint/tokenEndpoint to use
-  a different provider. Without configuration at all, clients fall back
-  to discovery via rel="me". --- */}}
+  indieauth.com, which is designed to be used this way (declared as a
+  site's own authorization/token endpoint, no client_id registration
+  required). indielogin.com is NOT a drop-in replacement for this: it
+  requires apps to pre-register their client_id and is meant to be
+  called directly by app developers, not declared as a site's endpoint
+  — doing so causes "client_id is not registered" errors for any
+  client that discovers it this way. Override authorizationEndpoint/
+  tokenEndpoint to use a different provider. Without configuration at
+  all, clients fall back to discovery via rel="me". --- */}}
   {{ with site.Params.indieauth }}
   {{ if ne .enable false }}
-  <link rel="authorization_endpoint" href="{{ .authorizationEndpoint | default "https://indielogin.com/authorize" }}">
-  <link rel="token_endpoint" href="{{ .tokenEndpoint | default "https://indielogin.com/token" }}">
+  <link rel="authorization_endpoint" href="{{ .authorizationEndpoint | default "https://indieauth.com/auth" }}">
+  <link rel="token_endpoint" href="{{ .tokenEndpoint | default "https://tokens.indieauth.com/token" }}">
   {{ end }}
   {{ end }}
 
