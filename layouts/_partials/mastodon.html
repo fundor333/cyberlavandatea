@@ -6,7 +6,7 @@
 {{- $user := or .username .user -}}
 {{- $id := .id -}}
 <section id="comments">
-  <p class="text-inactive text-sm">
+  <p class="text-inactive">
     {{ T "comments.mastodon_intro" }}
     <a target="_blank" rel="noopener" href="https://{{ $host }}/@{{ $user }}/{{ $id }}">{{ T "comments.original_post" }}</a>.
   </p>

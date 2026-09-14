@@ -190,7 +190,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Shortcodes: `toc`, `embed`, `toot`, `xkcd`, `allpages`, `88x31`, `buzzword`, `heart` | `layouts/_shortcodes/*` |
 | Content-type icons ("category") with Font Awesome (Kit or free CDN), `params.postIcons` override | `_partials/fontawesome.html`, `_partials/type-icon.html`, `_partials/postCard.html` |
 | **LGBTQ+ corner** (pride.codes, top-right), opt-in `params.prideCorner` (default `false`) | `_partials/pride-corner.html` |
-| Small-web extras: **88×31** badges (folder + JSON, shuffled), **webring** (`webring.html`: icon / prev-next / web component), **"reference this post"** box (configurable preferred name / pronouns / "learn more" link + copy-URL), "written by a human", **backlinks** (`findRE`), **related** ("See Also") | `_partials/88x31.html`, `_partials/webring.html`, `_partials/cite.html`, `_partials/inbound-links.html`, `_partials/comments.html`, `footer.html` |
+| Small-web extras: **88×31** badges (folder + JSON, shuffled), **webring** (`webring.html`: icon / prev-next / web component), **"reference this post"** box (configurable preferred name / pronouns / "learn more" link + copy-URL), a collapsible panel styled like the TOC/series menu, "written by a human", **backlinks** (`findRE`), **related** ("See Also") | `_partials/88x31.html`, `_partials/webring.html`, `_partials/cite.html`, `_partials/inbound-links.html`, `_partials/comments.html`, `footer.html` |
 | Palette / theming: 6 roles + surfaces derived by opacity, Chroma within green/blue | `assets/css/main.css` |
 
 KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
