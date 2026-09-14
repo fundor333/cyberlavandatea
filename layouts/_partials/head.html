@@ -15,11 +15,17 @@
   <link rel="pingback" href="{{ .pingback | default (printf "https://webmention.io/%s/xmlrpc" .targetDomain) }}" />
   {{ end }}
 
-  {{/* --- IndieAuth (opt out with params.indieauth.enable = false) --- */}}
-  {{ $indieauth := site.Params.indieauth | default (dict) }}
-  {{ if ne $indieauth.enable false }}
-  <link rel="authorization_endpoint" href="{{ $indieauth.authorizationEndpoint | default "https://indieauth.com" }}">
-  <link rel="token_endpoint" href="{{ $indieauth.tokenEndpoint | default "https://indieauth.com" }}">
+  {{/* --- IndieAuth (opt-in: only emitted when params.indieauth is set,
+  and not disabled via params.indieauth.enable = false). Defaults to
+  indielogin.com, the service indieauth.com's own docs now point to as
+  its replacement. Override authorizationEndpoint/tokenEndpoint to use
+  a different provider. Without configuration at all, clients fall back
+  to discovery via rel="me". --- */}}
+  {{ with site.Params.indieauth }}
+  {{ if ne .enable false }}
+  <link rel="authorization_endpoint" href="{{ .authorizationEndpoint | default "https://indielogin.com/authorize" }}">
+  <link rel="token_endpoint" href="{{ .tokenEndpoint | default "https://indielogin.com/token" }}">
+  {{ end }}
   {{ end }}
 
 

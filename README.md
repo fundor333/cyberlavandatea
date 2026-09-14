@@ -184,7 +184,7 @@ free CDN, or `disable`), **KaTeX** (only when `math` is set), **Google Fonts**
 | Microformats2: `h-entry` / `e-content` / `u-photo` / `p-category` / `dt-published`; response types reply/repost/like/bookmark/rsvp | `layouts/single.html`, `_partials/micro.html` |
 | Favicons entirely from config (`favicon`, `faviconSvg`, `appleTouchIcon`, `icon96`, `webmanifest`, `maskIcon`) | `_partials/favicons.html` |
 | **Webmention**: `rel=webmention`/`pingback` + the webmention.io client rendering a reactions facepile and inline comments into `#webmentions` (styled) | `_partials/webmention.html`, `_partials/custom-head.html`, `assets/css/main.css` |
-| **IndieAuth**: `rel=authorization_endpoint`/`token_endpoint`, configurable (`params.indieauth`), default `https://indieauth.com` | `_partials/head.html` |
+| **IndieAuth**: `rel=authorization_endpoint`/`token_endpoint`, opt-in via `params.indieauth` (unset = no tags, clients discover via `rel=me`), defaults to indielogin.com | `_partials/head.html` |
 | **Mastodon comments** (fetch `/context` + DOMPurify) + build-time toot embed | `_partials/mastodon.html`, `_partials/toot.html` |
 | **Brid.gy Publish** with configurable targets + UTM | `_partials/bridgy.html` |
 | **Syndication** ("also posted on") | `_partials/syndication.html` |
@@ -290,10 +290,15 @@ KaTeX (conditional, `_partials/helpers/katex.html`) and Google Analytics
     # Renders <h2>Responses</h2> + <h2>Reactions</h2> into #webmentions, and emits
     # <link rel="webmention"> / <link rel="pingback">.
 
+  # Opt-in: omit [params.indieauth] entirely to emit no
+  # authorization_endpoint/token_endpoint tags and let IndieAuth clients
+  # discover via rel="me" instead. When enabled, defaults to
+  # indielogin.com (the service indieauth.com's own docs now point to
+  # as its replacement); override the endpoints for a different provider.
   [params.indieauth]                # <link rel=authorization_endpoint/token_endpoint>
-    enable                = true    # opt out with `false`
-    authorizationEndpoint = "https://indieauth.com"
-    tokenEndpoint         = "https://indieauth.com"
+    enable                = true    # opt out with `false` (or omit the table)
+    authorizationEndpoint = "https://indielogin.com/authorize"
+    tokenEndpoint         = "https://indielogin.com/token"
 
   bridgy = ["mastodon", "bluesky"]
 
