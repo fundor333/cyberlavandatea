@@ -166,9 +166,12 @@ your own `@font-face` via `custom-head`.
   syntax tints in §2.3.
 - **Blockquote**: Surface background, a 4px Primary left border, Inactive
   text — reads as "aside," not body copy.
-- **TOC, `.toot`, comments**: same Surface/Border/`--radius-panel` panel
-  treatment as code blocks, so all "boxed" content in a post looks like one
-  family of components.
+- **TOC, `.toot`, comments, the "Reference this post" box**: same
+  Surface/Border/`--radius-panel` panel treatment as code blocks, so all
+  "boxed" content in a post looks like one family of components. `.cite`
+  (the "Reference this post" `<details>`) reuses `.toc` itself rather than
+  duplicating the panel rules, so it opens/closes the same way as the TOC
+  and the series list.
 - **Tags, social icons, footer links**: Inactive by default, Primary on
   hover — the same interactive-state pattern used everywhere else, so
   hover behavior is predictable across the whole theme rather than

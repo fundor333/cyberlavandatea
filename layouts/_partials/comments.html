@@ -2,7 +2,7 @@
 {{- if in $sections .Type -}}
 <section class="comments mt-10 border-t border-border pt-6">
   <h2 class="text-lg">{{ T "comments.title" }}</h2>
-  <p class="text-inactive text-sm">{{ T "comments.how_to" | safeHTML }}</p>
+  <p class="text-inactive">{{ T "comments.how_to" | safeHTML }}</p>
 
   {{ partial "webmention.html" . }}
 
