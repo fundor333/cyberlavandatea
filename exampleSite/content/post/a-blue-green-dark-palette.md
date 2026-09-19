@@ -12,4 +12,8 @@ so no extra hue enters the *chrome*.
 
 An unvisited link is **blue**; a [visited link](#) is sage; on `:hover` it
 turns green. Every text pairing clears WCAG AA, and body text and code reach
-AAA.
+AAA.[^1]
+
+[^1]: Primary on Background measures ~10.2:1, well past the 7:1 AAA
+    threshold for normal text — see the [style guide](/style-guide/) for the
+    full contrast table.

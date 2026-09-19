@@ -176,6 +176,15 @@ your own `@font-face` via `custom-head`.
   hover — the same interactive-state pattern used everywhere else, so
   hover behavior is predictable across the whole theme rather than
   component-specific.
+- **Lists**: markers read as tech/CLI furniture rather than book-style
+  bullets/numerals — a disclosure triangle (`▸`) for `ul`, zero-padded
+  indices (`01`, `02`, …) for `ol` — both set in the mono face and Primary.
+- **Footnotes**: Goldmark's footnote extension renders the note list as a
+  plain `<ol>`, so it already picks up the zero-padded, mono, Primary
+  `::marker` from the list styling above. The inline reference (`<sup><a
+  class="footnote-ref">`) is styled to match — same font, weight and color,
+  and zero-padded via a CSS counter — so "¹" in running text and "01" in the
+  note list read as one system instead of a plain browser-default number.
 
 ## 6. Motion
 

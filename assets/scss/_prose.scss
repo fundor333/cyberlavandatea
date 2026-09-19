@@ -2,6 +2,7 @@
 // 6. Prose (.e-content) — vertical rhythm
 // ---------------------------------------------------------------------------
 .e-content {
+  counter-reset: footnote;
   > * + * { margin-top: 1.1rem; }
   ul, ol { padding-left: 1.4rem; }
   li + li { margin-top: 0.3rem; }
@@ -22,6 +23,27 @@
     color: var(--color-primary);
     font-family: var(--font-mono);
     font-weight: 600;
+  }
+  /* Footnote references pick up the same mono/Primary/zero-padded
+     treatment as the footnote list's own ::marker, so "¹" in the
+     body and "01" in the list read as one system. */
+  .footnote-ref {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0;
+    counter-increment: footnote;
+
+    &::before {
+      content: counter(footnote, decimal-leading-zero);
+      font-size: 0.75rem;
+    }
+    &:hover, &:focus {
+      text-decoration: underline;
+      text-decoration-color: var(--color-primary);
+    }
   }
   h2, h3, h4 { scroll-margin-top: 5rem; }
   h2 a, h3 a, h4 a { text-decoration: none; color: inherit; }

@@ -38,7 +38,10 @@ const index = lunr(function () {
 ```
 
 > Note: the index is rebuilt on every build. With a few hundred posts the file
-> stays under 200&nbsp;KB.
+> stays under 200&nbsp;KB.[^1]
 
 Results are rendered from a `<template>` cloned per match, with the same summary
 truncation Hugo itself uses.
+
+[^1]: Measured on this site's own `search.json` at ~70 posts; size grows
+    roughly linearly with the number of indexed fields, not just post count.
