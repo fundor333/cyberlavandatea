@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.3.0] - 2026-09-20
+
+### Hotfix
+
+- Match footnote reference style to footnote list marker
+
 ## [1.2.2] - 2026-09-14
 
 ### Hotfix
