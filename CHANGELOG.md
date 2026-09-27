@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.3.1] - 2026-09-27
+
+### Changed
+
+- Enhance heading styles and prose formatting in SCSS files
+
 ## [1.3.0] - 2026-09-20
 
 ### Hotfix
