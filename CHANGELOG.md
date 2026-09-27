@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.0] - 2026-09-27
+
+### Changed
+
+- Adjust padding for lists and refine marker spacing in SCSS
+
 ## [1.3.1] - 2026-09-27
 
 ### Changed
