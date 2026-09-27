@@ -55,6 +55,7 @@
   }
   .post-item-title {
     margin: 0; min-width: 0; overflow-wrap: break-word; font-size: 1rem; font-weight: 400;
+    text-transform: none; letter-spacing: normal;
 
     a { font-family: var(--font-display); text-decoration: none; }
   }

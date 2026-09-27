@@ -13,19 +13,28 @@ still works: footnotes,[^1] for instance.
 
 # This is a heading level one
 
-Rendered with the display face, an anchor `id` from its slug, and a
-pilcrow (`¶`) that fades in on hover — the same render hook handles every
-level below.
+Rendered with the display face at its largest, an anchor `id` from its
+slug, and a pilcrow (`¶`) that fades in on hover — the same render hook
+handles every level below. Each level has its own voice rather than just
+a smaller size, so the hierarchy reads at a glance.
 
 ## This is a heading level two
 
-Also the level this page uses for its own section headers, which is why
-it shows up nested under "Heading level one" in the table of contents
-above.
+Still the display face, a step down, with a hairline underneath and a
+short Primary segment at its start — in prose it opens a section, so it
+doubles as a divider. Also the level this page uses for its own section
+headers, which is why it shows up nested under "Heading level one" in the
+table of contents above.
 
 ### This is a heading level three
 
+Drops to the body face, bold, in Primary green: a sub-section title that
+stands out from the paragraph without competing with the h2 above it.
+
 #### This is a heading level four
+
+A mono, uppercase, letter-spaced label in Inactive grey, prefixed with a
+Primary `//` — like a comment tag in a config file.
 
 ## Body text
 
@@ -118,13 +127,13 @@ The same six roles, read directly from `assets/scss/_tokens.scss`:
 | Visited | <span class="style-guide-swatch" style="background:#7EA88E"></span> | `#7EA88E` |
 | Inactive | <span class="style-guide-swatch" style="background:#8B8F9A"></span> | `#8B8F9A` |
 
-And the two typefaces that carry it:
+And the typefaces that carry it:
 
 | Role | Typeface |
 |---|---|
-| Display | Audiowide |
-| Body | Rajdhani |
-| Mono | JetBrains Mono (stack) |
+| Display | Audiowide — h1, h2 |
+| Body | Rajdhani — body text, h3 |
+| Mono | JetBrains Mono (stack) — code, list markers, h4 |
 | Signature | Sig Font, cursive fallback |
 
 [^1]: Goldmark's footnote extension, rendered automatically below — and yes, it's an `<ol>`, so it gets the same zero-padded markers as every other numbered list on this page.

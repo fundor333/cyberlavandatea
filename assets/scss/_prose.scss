@@ -46,6 +46,19 @@
     }
   }
   h2, h3, h4 { scroll-margin-top: 5rem; }
+  /* In prose, h2 opens a section: a hairline underneath with a short
+     Primary segment, so it reads as a divider as well as a title. */
+  h2 {
+    margin-top: 2.4rem;
+    padding-bottom: 0.4rem;
+    background:
+      linear-gradient(var(--color-primary), var(--color-primary)) left bottom / 2.5rem 2px no-repeat,
+      linear-gradient(var(--color-border), var(--color-border)) left bottom / 100% 1px no-repeat;
+  }
+  h4::before {
+    content: "// ";
+    color: var(--color-primary);
+  }
   h2 a, h3 a, h4 a { text-decoration: none; color: inherit; }
   h2:hover .heading-anchor,
   h3:hover .heading-anchor,

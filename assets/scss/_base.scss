@@ -29,9 +29,26 @@
     margin: 1.6em 0 0.5em;
     letter-spacing: -0.01em;
   }
-  h1 { font-size: 2rem; letter-spacing: -0.015em; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
+  /* Each level gets its own voice, not just a smaller size:
+     h1/h2 in the display face, h3 drops to the body face in bold Primary,
+     h4 becomes a mono uppercase label — like a section tag in a config file. */
+  h1 { font-size: 2.25rem; letter-spacing: -0.02em; line-height: 1.15; }
+  h2 { font-size: 1.55rem; }
+  h3 {
+    font-family: var(--font-sans);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--color-primary);
+  }
+  h4 {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-inactive);
+  }
 
   a {
     color: var(--color-link);
