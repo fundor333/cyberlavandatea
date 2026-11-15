@@ -31,7 +31,23 @@
           {{ with $meta.iso }}<tr><th>ISO</th><td>{{ . }}</td></tr>{{ end }}
           {{ with $meta.focal_length }}<tr><th>{{ T "photos.focal" }}</th><td>{{ . }}</td></tr>{{ end }}
         </table>
+        {{ else if ge hugo.Version "0.155.3" }}
+        {{/* Hugo >= 0.155.3: Image.Exif is removed, read embedded metadata via Image.Meta */}}
+        {{ if reflect.IsImageResourceWithMeta $img }}
+        {{ with $img.Meta }}
+        <table class="exif mt-2 text-sm">
+          {{ with .Date }}<tr><th>{{ T "photos.date" }}</th><td>{{ .Format "2006-01-02 15:04" }}</td></tr>{{ end }}
+          {{ with .Exif.Model }}<tr><th>{{ T "photos.camera" }}</th><td>{{ . }}</td></tr>{{ end }}
+          {{ with .Exif.LensModel }}<tr><th>{{ T "photos.lens" }}</th><td>{{ . }}</td></tr>{{ end }}
+          {{ with .Exif.ExposureTime }}<tr><th>{{ T "photos.shutter" }}</th><td>{{ . }}s</td></tr>{{ end }}
+          {{ with .Exif.FNumber }}<tr><th>{{ T "photos.aperture" }}</th><td>f/{{ float . }}</td></tr>{{ end }}
+          {{ with .Exif.ISO }}<tr><th>ISO</th><td>{{ . }}</td></tr>{{ end }}
+          {{ with .Exif.FocalLength }}<tr><th>{{ T "photos.focal" }}</th><td>{{ float . }}mm</td></tr>{{ end }}
+        </table>
+        {{ end }}
+        {{ end }}
         {{ else }}
+        {{/* Hugo < 0.155.3: legacy Image.Exif */}}
         {{ with $img.Exif }}
         <table class="exif mt-2 text-sm">
           {{ with .Date }}<tr><th>{{ T "photos.date" }}</th><td>{{ .Format "2006-01-02 15:04" }}</td></tr>{{ end }}
