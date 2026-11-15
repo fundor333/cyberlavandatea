@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.5.0] - 2026-11-15
+
+### Hotfix
+
+- Read photo metadata via Image.Meta on Hugo >= 0.155.3
+
 ## [1.4.2] - 2026-11-15
 
 ### Added
