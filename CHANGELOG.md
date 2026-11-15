@@ -3,6 +3,16 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.2] - 2026-11-15
+
+### Added
+
+- Adding some automation for the makefile
+
+### Hotfix
+
+- Makefile command fixed
+
 ## [1.4.1] - 2026-11-15
 
 ### Added
