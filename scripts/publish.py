@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import calendar
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -32,6 +33,10 @@ BUMPS = {
     "3": ("major", "breaking changes"),
 }
 CONVENTIONAL_TYPES = ("feat", "fix", "style", "refactor", "perf", "docs", "chore", "build", "ci", "test")
+
+# Invoked from the Makefile, MAKE is the real make binary. Calling the
+# /usr/bin/make shim from an x86_64 (Rosetta) Python fails inside xcrun.
+MAKE = os.environ.get("MAKE", "make")
 
 DRY_RUN = False
 
@@ -235,7 +240,7 @@ def main() -> None:
 
     if not args.skip_build:
         step("Checking the exampleSite build")
-        run("make", "build", mutating=False)
+        run(MAKE, "build", mutating=False)
 
     step(f"Pushing to origin/{BRANCH} (triggers CI and Pages)")
     run("git", "push", "origin", BRANCH)

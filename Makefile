@@ -93,7 +93,7 @@ major minor hotfix: build
 PYTHON ?= python3
 
 publish:
-	@$(PYTHON) scripts/publish.py
+	@MAKE="$(MAKE)" $(PYTHON) scripts/publish.py
 
 publish-dry:
-	@$(PYTHON) scripts/publish.py --dry-run --skip-build
+	@MAKE="$(MAKE)" $(PYTHON) scripts/publish.py --dry-run --skip-build
