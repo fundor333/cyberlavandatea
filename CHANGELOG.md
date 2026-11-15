@@ -3,6 +3,12 @@
 All notable changes to this theme are documented here.
 The format is loosely based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.4.1] - 2026-11-15
+
+### Added
+
+- Enhance image rendering with responsive picture elements
+
 ## [1.4.0] - 2026-09-27
 
 ### Changed
