@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <rect width="400" height="160" rx="12" fill="#14151a"/>
+  <rect x="24" y="50" width="110" height="60" rx="8" fill="#1e6fd9"/>
+  <rect x="266" y="50" width="110" height="60" rx="8" fill="#22c55e"/>
+  <path d="M140 80 H258" stroke="#e5e7eb" stroke-width="4" marker-end="url(#a)"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#e5e7eb"/></marker></defs>
+  <text x="79" y="86" fill="#fff" font-family="sans-serif" font-size="16" text-anchor="middle">Markdown</text>
+  <text x="321" y="86" fill="#14151a" font-family="sans-serif" font-size="16" text-anchor="middle">&lt;picture&gt;</text>
+</svg>

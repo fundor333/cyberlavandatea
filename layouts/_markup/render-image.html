@@ -1,8 +1,47 @@
-{{- if .IsBlock -}}
-<figure>
-  <img class="center-img u-photo rounded-lg" src="{{ .Destination | safeURL }}" loading="lazy"{{ with .PlainText }} alt="{{ . }}"{{ end }}>
-  {{- with .Title }}<figcaption>{{ . }}</figcaption>{{ end -}}
-</figure>
-{{- else -}}
-<img class="center-img u-photo" src="{{ .Destination | safeURL }}" loading="lazy"{{ with .PlainText }} alt="{{ . }}"{{ end }}{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- $u := urls.Parse .Destination -}}
+{{- $class := cond .IsBlock "center-img u-photo rounded-lg" "center-img u-photo" -}}
+
+{{- /* Resolve the image as a page resource first, then as a global asset. */ -}}
+{{- $image := "" -}}
+{{- if not $u.IsAbs -}}
+  {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- with .PageInner.Resources.Get $path -}}
+    {{- $image = . -}}
+  {{- else -}}
+    {{- with resources.Get $path -}}
+      {{- $image = . -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}
+
+{{- $raster := false -}}
+{{- $base := "" -}}
+{{- $src := .Destination -}}
+{{- with $image -}}
+  {{- $src = .RelPermalink -}}
+  {{- $raster = in (slice "jpeg" "png" "webp") (lower .MediaType.SubType) -}}
+  {{- if $raster -}}
+    {{- $base = . -}}
+    {{- if gt .Width 1600 }}{{ $base = .Resize "1600x" }}{{ end -}}
+    {{- $src = $base.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if .IsBlock }}<figure>{{ end -}}
+{{- if $raster -}}
+<picture>
+  {{- range slice "avif" "webp" -}}
+    {{- if ne . (lower $image.MediaType.SubType) }}
+  <source srcset="{{ ($base.Process .).RelPermalink }}" type="image/{{ . }}">
+    {{- end -}}
+  {{- end }}
+  <img class="{{ $class }}" src="{{ $src }}" width="{{ $base.Width }}" height="{{ $base.Height }}" loading="lazy" decoding="async"
+    {{- with .PlainText }} alt="{{ . }}"{{ end }}
+    {{- if not .IsBlock }}{{ with .Title }} title="{{ . }}"{{ end }}{{ end }}>
+</picture>
+{{- else -}}
+<img class="{{ $class }}" src="{{ $src | safeURL }}" loading="lazy" decoding="async"
+  {{- with .PlainText }} alt="{{ . }}"{{ end }}
+  {{- if not .IsBlock }}{{ with .Title }} title="{{ . }}"{{ end }}{{ end }}>
+{{- end -}}
+{{- if .IsBlock }}{{ with .Title }}<figcaption>{{ . }}</figcaption>{{ end }}</figure>{{ end -}}

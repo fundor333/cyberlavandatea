@@ -147,3 +147,9 @@ allow = [
   '^postcss$',
   '^tailwindcss$',
 ]
+
+# exampleSite only: themes/cyberlavandatea is a symlink to the repo root (../),
+# which lies outside the paths Node may read. A real site with the theme in
+# themes/ or as a Hugo module does not need this.
+[security.node.permissions]
+allowRead = [".."]
