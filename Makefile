@@ -9,7 +9,7 @@ CLIFF    ?= git-cliff
 
 .DEFAULT_GOAL := dev
 
-.PHONY: install dev serve build regenerate clean version bump changelog release tag major minor hotfix
+.PHONY: install dev serve build regenerate clean version bump changelog release tag major minor hotfix publish publish-dry
 
 # Install the exampleSite JS deps (tailwindcss CLI). Re-runs only when
 # package.json changes relative to the installed node_modules.
@@ -82,3 +82,18 @@ major minor hotfix: build
 	@sleep 2
 	@echo "Triggered $@ release. Watching the run:"
 	gh run watch "$$(gh run list --workflow=release.yml --limit=1 --json databaseId --jq '.[0].databaseId')"
+
+# --- Interactive publish -----------------------------------------------
+# "I'm done with my changes": commits pending changes (asking for a
+# Conventional Commit message), asks hotfix/minor/major and shows the
+# resulting tag, builds the site, pushes main (CI + Pages rebuild the
+# site), then dispatches release.yml and follows it until the tag and the
+# GitHub Release exist. `make publish-dry` shows the plan without
+# committing, pushing or releasing.
+PYTHON ?= python3
+
+publish:
+	@$(PYTHON) scripts/publish.py
+
+publish-dry:
+	@$(PYTHON) scripts/publish.py --dry-run --skip-build
